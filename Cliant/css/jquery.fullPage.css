@@ -6,7 +6,7 @@
  * Copyright (C) 2013 alvarotrigo.com - A project by Alvaro Trigo
  */
 
-@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
+@import url(http://fonts.googleapis.com/earlyaccess/notosansjp.css);
 
 html.fp-enabled,
 .fp-enabled body {
@@ -197,7 +197,7 @@ html.fp-enabled,
     top: -2px;
     color: #fff;
     font-size: 14px;
-    font-family: 'Noto Sans Japanese', arial, helvetica, sans-serif;
+    font-family: 'Noto Sans JP', arial, helvetica, sans-serif;
     white-space: nowrap;
     max-width: 220px;
     overflow: hidden;

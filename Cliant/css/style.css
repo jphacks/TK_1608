@@ -3,7 +3,6 @@ body { }
 div#chat {
     text-align: center;
     font-weight: bold;
-    font-size: 60px;
     background-color: #E6EE9C;
 }
 
@@ -42,6 +41,7 @@ div#timer {
 }
 
 span#remainTime {
+    font-size: 60px;
     color: #E64A19;
     /*text-align: right;*/
 }
@@ -50,56 +50,56 @@ div#human1 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 40vh);
-    left: calc(50% - 8vh - 5vh);
+    left: calc(50% - 8vh - 4.5vh);
 }
 
 div#human2 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 40vh);
-    left: calc(50% + 8vh - 5vh);
+    left: calc(50% + 8vh - 4.5vh);
 }
 
 div#human3 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 40vh);
-    left: calc(50% - 24vh - 5vh);
+    left: calc(50% - 24vh - 4.5vh);
 }
 
 div#human4 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 40vh);
-    left: calc(50% + 24vh - 5vh);
+    left: calc(50% + 24vh - 4.5vh);
 }
 
 div#human5 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 35vh);
-    left: calc(50% - 40vh - 5vh);
+    left: calc(50% - 40vh - 4.5vh);
 }
 
 div#human6 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 35vh);
-    left: calc(50% + 40vh - 5vh);
+    left: calc(50% + 40vh - 4.5vh);
 }
 
 div#human7 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 27vh);
-    left: calc(50% - 52vh - 5vh);
+    left: calc(50% - 52vh - 4.5vh);
 }
 
 div#human8 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 27vh);
-    left: calc(50% + 52vh - 5vh);
+    left: calc(50% + 52vh - 4.5vh);
 }
 
 div#desk {
@@ -109,17 +109,153 @@ div#desk {
     left: calc(50% - 55vh);
 }
 
+div#fukidashi1 {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh);
+}
+
+div#fukidashi2 {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh);
+}
+
+div#fukidashi3 {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh - 2vh);
+}
+
+div#fukidashi4 {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh + 2vh);
+}
+
+div#fukidashi5 {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% - 59vh);
+    left: calc(50% - 35vh - 12vh);
+}
+
+div#fukidashi6 {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% - 59vh);
+    left: calc(50% - 35vh + 12vh);
+}
+
+div#fukidashi7 {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% - 58vh);
+    left: calc(50% - 35vh - 22vh);
+}
+
+div#fukidashi8 {
+    position: absolute;
+    z-index: 3;
+    top: calc(100% - 58vh);
+    left: calc(50% - 35vh + 22vh);
+}
+
+div#answer1 {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh);
+    width: 70vh;
+    padding-top: 1.5vh;
+}
+
+div#answer2 {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh);
+    width: 70vh;
+    padding-top: 1.5vh;
+}
+
+div#answer3 {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh - 2vh);
+    width: 70vh;
+    padding-top: 1.5vh;
+}
+
+div#answer4 {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh + 2vh);
+    width: 70vh;
+    padding-top: 1.5vh;
+}
+
+div#answer5 {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 59vh);
+    left: calc(50% - 35vh - 12vh);
+    width: 70vh;
+    padding-top: 1.5vh;
+}
+
+div#answer6 {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 59vh);
+    left: calc(50% - 35vh + 12vh);
+    width: 70vh;
+    padding-top: 1.5vh;
+}
+
+div#answer7 {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 59vh);
+    left: calc(50% - 35vh - 22vh);
+    width: 70vh;
+    padding-top: 1.5vh;
+}
+
+div#answer8 {
+    position: absolute;
+    z-index: 4;
+    top: calc(100% - 59vh);
+    left: calc(50% - 35vh + 22vh);
+    width: 70vh;
+    padding-top: 1.5vh;
+}
+
+
+
 img.humanPicture {
-    height: auto;
     width: 9vh;
+    height: auto;
 }
 
 img.deskPicture {
-    height: 20vh;
     width: 110vh;
+    height: 20vh;
 }
 
-img.fukidashiPictureC {
+img.fukidashiPicture {
+    width: 70vh;
     height: auto;
-    width: 60vh;
+}
+
+span.answers {
+    text-align: center;
+    font-size: 50px;
+    margin: auto;
 }

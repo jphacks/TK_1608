@@ -1,4 +1,24 @@
-@import url(http://fonts.googleapis.com/earlyaccess/notosansjapanese.css);
-body{
-    font-family: 'Noto Sans Japanese',sans-serif;
+body {
+
+}
+
+div#chat {
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    background-color: #2196F3;
+}
+
+div#shiritori {
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    background-color: #009688;
+}
+
+div#fiveBomber {
+    text-align: center;
+    font-weight: bold;
+    font-size: 60px;
+    background-color: #FF9800;
 }

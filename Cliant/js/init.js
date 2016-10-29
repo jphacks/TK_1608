@@ -1,27 +1,35 @@
-var count = 60;
-var num = 1;
+var MasterTimer;
+var data;
 
-/*各種タイマー*/
-var shiritoriflag = 1;
-var shiritori_timer;
-/*ajax通信テスト変数*/
-var num_s = 0;
+/*後で消す*/
+var num_s=0; 
 
 function loadFirst() {
-    $.fn.fullpage.silentMoveTo(0, 0);
-
-    setInterval("timer()", 2000);
-    shiritori_timer = setInterval("siritori_update()", 2000);
-
+    $.fn.fullpage.silentMoveTo(0, 1);
+    MasterTimer = setInterval("update_view()", 1000);
 }
 
-function timer() {
-    count = count - 1 > 0 ? count - 1 : 60;
-    document.getElementById("remainTime").textContent = count;
-    // count = (count + 1) % 3;
-    // $.fn.fullpage.moveTo(0, count);
-    pop(("#fukidashi" + num), ("#answer" + num));
-    num = 1 + num % 8;
+function update_view() {
+    get_Json("mode");
+
+    switch (data.mode) {
+        case "chat":
+        $.fn.fullpage.moveTo(0, 1);
+            get_Json("chat")
+            chat();
+            break;
+        case "shiritori":
+        $.fn.fullpage.moveTo(0, 0);
+        get_Json("shiritori")
+            shiritori();
+            break;
+        case "fiveBomber":
+        $.fn.fullpage.moveTo(0, 2);
+            fiveBomber(get_Json("fiveBomber"));
+            break;
+        default:
+            break;
+    }
 }
 
 $(document).ready(function () {
@@ -41,32 +49,27 @@ $(document).ready(function () {
     $('#fukidashi8, #answer8').css({ opacity: 0 });
 });
 
-function siritori_update() {
-    $.ajax({
+function get_Json(str) {
+    $.getJSON(("js/json/" + str + ".json"), function(data_){
+        data = data_;
+    });
+    /*$.ajax({
         type: "get",
-        url: "js/json/shiritori.json",
+        url: ("js/json/" + str + ".json"),
         dataType: "json",
         success: function (data) {
-            /*ajax通信テスト関数*/
-            console.log(num_s);
-            var dataArray = data.message;
-            console.log("success");
-            document.getElementById("wordnow").textContent = dataArray[num_s].nowmessage;
-            document.getElementById("wordpre").textContent = dataArray[num_s].premessage;
-            if (dataArray[num_s].answer == 1) {
-                console.log("正解!");
-            } else {
-                console.log("不正解...");
-            }
-            num_s = num_s + 1;
-            if (num_s > 3) {
-                num_s = 0;
-            }
+            console.log("succes!");
+            result = $.parseJSON("data");
+            console.log("result " + result);
         },
         error: function (data) {
-            console.log("error");
+            console.log("json error");
+            result=null;
         }
     });
+    return result;
+    */
+
 }
 
 function pop(fukidashi, answer) {
@@ -77,4 +80,29 @@ function pop(fukidashi, answer) {
                     $(this).animate({ opacity: 0 }, 500, 'swing');
                 });
         });
+}
+
+function shiritori() {
+    if (data != null) {
+        console.log("shiritori data "+ data);
+        alert(String(data));
+        var dataArray = data.message;
+        document.getElementById("wordnow").textContent = dataArray[num_s].nowmessage;
+        document.getElementById("wordpre").textContent = dataArray[num_s].premessage;
+        if (dataArray[num_s].answer == 1) {
+            console.log("正解!");
+        } else {
+            console.log("不正解...");
+        }
+        num_s = num_s + 1;
+        if (num_s > 3) {
+            num_s = 0;
+        }
+        num_s += 1;
+        if(num_s>3){
+            num_s=0;
+        }
+    } else {
+        console.log("data null");
+    }
 }

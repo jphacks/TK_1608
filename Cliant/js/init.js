@@ -1,11 +1,11 @@
 var count = 60;
 var num = 1;
 
-/*しりとりタイマー起動停止用変数*/
+/*各種タイマー*/
 var shiritoriflag = 1;
 var shiritori_timer;
 /*ajax通信テスト変数*/
-var num = 0;
+var num_s = 0;
 
 function loadFirst() {
     $.fn.fullpage.silentMoveTo(0, 0);
@@ -48,19 +48,19 @@ function siritori_update() {
         dataType: "json",
         success: function (data) {
             /*ajax通信テスト関数*/
-            console.log(num);
+            console.log(num_s);
             var dataArray = data.message;
             console.log("success");
-            document.getElementById("wordnow").textContent = dataArray[num].nowmessage;
-            document.getElementById("wordpre").textContent = dataArray[num].premessage;
-            if (dataArray[num].answer == 1) {
+            document.getElementById("wordnow").textContent = dataArray[num_s].nowmessage;
+            document.getElementById("wordpre").textContent = dataArray[num_s].premessage;
+            if (dataArray[num_s].answer == 1) {
                 console.log("正解!");
             } else {
                 console.log("不正解...");
             }
-            num = num + 1;
-            if (num > 3) {
-                num = 0;
+            num_s = num_s + 1;
+            if (num_s > 3) {
+                num_s = 0;
             }
         },
         error: function (data) {

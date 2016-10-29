@@ -1,34 +1,36 @@
 var MasterTimer;
-var data;
+var m_data, c_data, s_data, f_data;
 
 /*後で消す*/
-var num_s=0; 
+var num_c = 0;
+var num_s = 0;
 
 function loadFirst() {
     $.fn.fullpage.silentMoveTo(0, 1);
-    MasterTimer = setInterval("update_view()", 1000);
+    MasterTimer = setInterval("timer()", 2000);
+}
+
+function timer() {
+    get_Json("mode");
 }
 
 function update_view() {
-    get_Json("mode");
-
-    switch (data.mode) {
+    // console.log("mode: " + m_data.mode);
+    switch (m_data.mode) {
         case "chat":
         $.fn.fullpage.moveTo(0, 1);
-            get_Json("chat")
-            chat();
-            break;
+        get_Json("chat");
+        break;
         case "shiritori":
         $.fn.fullpage.moveTo(0, 0);
-        get_Json("shiritori")
-            shiritori();
-            break;
+        get_Json("shiritori");
+        break;
         case "fiveBomber":
         $.fn.fullpage.moveTo(0, 2);
-            fiveBomber(get_Json("fiveBomber"));
-            break;
+        fiveBomber(get_Json("fiveBomber"));
+        break;
         default:
-            break;
+        break;
     }
 }
 
@@ -50,30 +52,39 @@ $(document).ready(function () {
 });
 
 function get_Json(str) {
-    $.getJSON(("js/json/" + str + ".json"), function(data_){
-        data = data_;
-    });
-    /*$.ajax({
-        type: "get",
-        url: ("js/json/" + str + ".json"),
-        dataType: "json",
-        success: function (data) {
-            console.log("succes!");
-            result = $.parseJSON("data");
-            console.log("result " + result);
-        },
-        error: function (data) {
-            console.log("json error");
-            result=null;
+    $.getJSON(("js/json/" + str + ".json"), function(data_) {
+        switch (str) {
+            case "mode":
+            m_data = data_; update_view();
+            break;
+            case "chat":
+            c_data = data_; chat();
+            break;
+            case "shiritori":
+            s_data = data_; shiritori();
+            break;
+            case "fiveBomber":
+            f_data = data_; break;
+            default:
+            break;
         }
     });
-    return result;
-    */
-
 }
 
-function pop(fukidashi, answer) {
-    $(fukidashi + "," + answer).animate({ opacity: 1 }, 500, 'swing',
+function chat() {
+    console.log("c_data: " + c_data);
+    if (c_data != null) {
+        var dataArray = c_data.message;
+        $(("#answer" + dataArray[num_c].ID)).children("span").text(dataArray[num_c].answer);
+        pop(dataArray[num_c].ID);
+        num_c = (num_c + 1) % 8;
+    } else {
+        console.log("data null");
+    }
+}
+
+function pop(idNum) {
+    $("#fukidashi" + idNum + "," + "#answer" + idNum).animate({ opacity: 1 }, 500, 'swing',
     function () {
         $(this).animate({ opacity: 1 }, 500, 'swing',
         function () {
@@ -83,10 +94,9 @@ function pop(fukidashi, answer) {
 }
 
 function shiritori() {
-    if (data != null) {
-        console.log("shiritori data "+ data);
-        alert(String(data));
-        var dataArray = data.message;
+    console.log("s_data: " + s_data);
+    if (s_data != null) {
+        var dataArray = s_data.message;
         document.getElementById("wordnow").textContent = dataArray[num_s].nowmessage;
         document.getElementById("wordpre").textContent = dataArray[num_s].premessage;
         if (dataArray[num_s].answer == 1) {
@@ -94,14 +104,7 @@ function shiritori() {
         } else {
             console.log("不正解...");
         }
-        num_s = num_s + 1;
-        if (num_s > 3) {
-            num_s = 0;
-        }
-        num_s += 1;
-        if(num_s>3){
-            num_s=0;
-        }
+        num_s = (num_s + 1) % 4;
     } else {
         console.log("data null");
     }

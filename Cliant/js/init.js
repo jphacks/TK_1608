@@ -18,7 +18,7 @@ function timer() {
 }
 
 function update_view() {
-    
+
     switch (m_data.mode) {
         case "chat":
         $.fn.fullpage.moveTo(0, 1);
@@ -87,7 +87,7 @@ function chat() {
     if (c_data != null) {
         var dataArray = c_data.message;
         if (dataArray.ID > 0 && dataArray.ID < 9) {
-            if (dataArray.ID != chatLog[0] || (dataArray.answer != chatLog[1] && dataArray.answer != "")) {
+            if ((dataArray.ID != chatLog[0] || dataArray.answer != chatLog[1]) && dataArray.answer != "") {
                 chatLog[0] = dataArray.ID;
                 chatLog[1] = dataArray.answer;
                 $(("#answer" + dataArray.ID)).children("span").text(dataArray.answer);

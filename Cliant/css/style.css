@@ -123,3 +123,20 @@ img.fukidashiPictureC {
     height: auto;
     width: 60vh;
 }
+div#wordfield{
+    position: relative;
+    background-color: rgba(0,0,0,0.8);
+    width: 80vw;
+    height: 80vh;
+    top: calc(50% - 40vh);
+    left: calc(50% - 40vw);
+    text-align: center;
+}
+span#wordnow{
+    font-size: 200px;
+    color: white;
+}
+span#wordpre{
+    font-size: 100px;
+    color: rgba(255,255,255,0.8);
+}

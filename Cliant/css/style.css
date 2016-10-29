@@ -26,154 +26,174 @@ div.parts {
     height: 100vh;
 }
 
+div#chat_back {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: calc(50% - 50vh);
+    left: calc(50% - 50vw);
+    z-index: 0;
+}
+
+#chat_back img {
+    width: 100vw;
+    height: 100vh;
+}
+
 div#odai {
     position: absolute;
     background-color: #FFFFFF;
-    width: 50vw;
-    height: 45vh;
-    top: calc(50% - 45vh);
-    left: calc(50% - 25vw);
+    width: 45vw;
+    height: 40vh;
+    top: calc(50% - 42vh);
+    left: calc(50% - 22.5vw);
 }
 
 #odai img {
-    width: 50vw;
-    height: 45vh;
+    width: 45vw;
+    height: 40vh;
 }
 
 div#timer {
     position: absolute;
-    right: 5vh;
+    top: 4vh;
+    right: 4vw;
 }
 
 span#remainTime {
-    font-size: 60px;
-    color: #E64A19;
+    font-size: 80px;
+    color: #000000;
     /*text-align: right;*/
 }
 
 div#human1 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 40vh);
-    left: calc(50% - 8vh - 4.5vh);
+    top: calc(100% - 55vh);
+    left: calc(50% - 8vh - 12vh);
 }
 
 div#human2 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 40vh);
-    left: calc(50% + 8vh - 4.5vh);
+    top: calc(100% - 55vh);
+    left: calc(50% + 8vh - 12vh);
 }
 
 div#human3 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 40vh);
-    left: calc(50% - 24vh - 4.5vh);
+    top: calc(100% - 55vh);
+    left: calc(50% - 24vh - 12vh);
 }
 
 div#human4 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 40vh);
-    left: calc(50% + 24vh - 4.5vh);
+    top: calc(100% - 55vh);
+    left: calc(50% + 24vh - 12vh);
 }
 
 div#human5 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 35vh);
-    left: calc(50% - 40vh - 4.5vh);
+    top: calc(100% - 50vh);
+    left: calc(50% - 40vh - 12vh);
 }
 
 div#human6 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 35vh);
-    left: calc(50% + 40vh - 4.5vh);
+    top: calc(100% - 50vh);
+    left: calc(50% + 40vh - 12vh);
 }
 
 div#human7 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 27vh);
-    left: calc(50% - 52vh - 4.5vh);
+    top: calc(100% - 42vh);
+    left: calc(50% - 52vh - 12vh);
 }
 
 div#human8 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 27vh);
-    left: calc(50% + 52vh - 4.5vh);
+    top: calc(100% - 42vh);
+    left: calc(50% + 52vh - 12vh);
 }
 
 div#desk {
     position: absolute;
     z-index: 2;
-    top: calc(100% - 20vh);
-    left: calc(50% - 55vh);
+    top: calc(100% - 25vh);
+    left: calc(50% - 30vw);
+}
+
+img.deskPicture {
+    width: 60vw;
+    height: 25vh;
 }
 
 div#fukidashi1 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 60vh);
+    top: calc(100% - 63vh);
     left: calc(50% - 35vh);
 }
 
 div#fukidashi2 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 60vh);
+    top: calc(100% - 63vh);
     left: calc(50% - 35vh);
 }
 
 div#fukidashi3 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 60vh);
+    top: calc(100% - 63vh);
     left: calc(50% - 35vh - 2vh);
 }
 
 div#fukidashi4 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 60vh);
+    top: calc(100% - 63vh);
     left: calc(50% - 35vh + 2vh);
 }
 
 div#fukidashi5 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 59vh);
+    top: calc(100% - 62vh);
     left: calc(50% - 35vh - 12vh);
 }
 
 div#fukidashi6 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 59vh);
+    top: calc(100% - 62vh);
     left: calc(50% - 35vh + 12vh);
 }
 
 div#fukidashi7 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 58vh);
+    top: calc(100% - 61vh);
     left: calc(50% - 35vh - 22vh);
 }
 
 div#fukidashi8 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 58vh);
+    top: calc(100% - 61vh);
     left: calc(50% - 35vh + 22vh);
 }
 
 div#answer1 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 60vh);
+    top: calc(100% - 63vh);
     left: calc(50% - 35vh);
     width: 70vh;
     padding-top: 1.5vh;
@@ -182,7 +202,7 @@ div#answer1 {
 div#answer2 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 60vh);
+    top: calc(100% - 63vh);
     left: calc(50% - 35vh);
     width: 70vh;
     padding-top: 1.5vh;
@@ -191,7 +211,7 @@ div#answer2 {
 div#answer3 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 60vh);
+    top: calc(100% - 63vh);
     left: calc(50% - 35vh - 2vh);
     width: 70vh;
     padding-top: 1.5vh;
@@ -200,7 +220,7 @@ div#answer3 {
 div#answer4 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 60vh);
+    top: calc(100% - 63vh);
     left: calc(50% - 35vh + 2vh);
     width: 70vh;
     padding-top: 1.5vh;
@@ -209,7 +229,7 @@ div#answer4 {
 div#answer5 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 59vh);
+    top: calc(100% - 62vh);
     left: calc(50% - 35vh - 12vh);
     width: 70vh;
     padding-top: 1.5vh;
@@ -218,7 +238,7 @@ div#answer5 {
 div#answer6 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 59vh);
+    top: calc(100% - 62vh);
     left: calc(50% - 35vh + 12vh);
     width: 70vh;
     padding-top: 1.5vh;
@@ -227,7 +247,7 @@ div#answer6 {
 div#answer7 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 59vh);
+    top: calc(100% - 61vh);
     left: calc(50% - 35vh - 22vh);
     width: 70vh;
     padding-top: 1.5vh;
@@ -236,22 +256,15 @@ div#answer7 {
 div#answer8 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 59vh);
+    top: calc(100% - 61vh);
     left: calc(50% - 35vh + 22vh);
     width: 70vh;
     padding-top: 1.5vh;
 }
 
-
-
 img.humanPicture {
-    width: 9vh;
+    width: 30vh;
     height: auto;
-}
-
-img.deskPicture {
-    width: 110vh;
-    height: 20vh;
 }
 
 img.fukidashiPicture {

@@ -96,15 +96,14 @@ function pop(idNum) {
 function shiritori() {
     console.log("s_data: " + s_data);
     if (s_data != null) {
-        var dataArray = s_data.message;
-        document.getElementById("wordnow").textContent = dataArray[num_s].nowmessage;
-        document.getElementById("wordpre").textContent = dataArray[num_s].premessage;
-        if (dataArray[num_s].answer == 1) {
+        var dataArray = s_data;
+        document.getElementById("wordnow").textContent = dataArray.nowmessage;
+        document.getElementById("wordpre").textContent = dataArray.premessage;
+        if (dataArray.correct == 1) {
             console.log("正解!");
         } else {
             console.log("不正解...");
         }
-        num_s = (num_s + 1) % 4;
     } else {
         console.log("data null");
     }

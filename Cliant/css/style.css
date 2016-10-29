@@ -4,7 +4,7 @@ div#chat {
     text-align: center;
     font-weight: bold;
     font-size: 60px;
-    background-color: #2196F3;
+    background-color: #E6EE9C;
 }
 
 div#shiritori {
@@ -19,4 +19,107 @@ div#fiveBomber {
     font-weight: bold;
     font-size: 60px;
     background-color: #FF9800;
+}
+
+div#parts {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+div#odai {
+    position: absolute;
+    background-color: #FFFFFF;
+    width: 50vw;
+    height: 45vh;
+    top: calc(50% - 45vh);
+    left: calc(50% - 25vw);
+}
+
+div#timer {
+    position: absolute;
+    right: 5vh;
+}
+
+span#remainTime {
+    color: #E64A19;
+    /*text-align: right;*/
+}
+
+div#human1 {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 40vh);
+    left: calc(50% - 8vh - 5vh);
+}
+
+div#human2 {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 40vh);
+    left: calc(50% + 8vh - 5vh);
+}
+
+div#human3 {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 40vh);
+    left: calc(50% - 24vh - 5vh);
+}
+
+div#human4 {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 40vh);
+    left: calc(50% + 24vh - 5vh);
+}
+
+div#human5 {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 35vh);
+    left: calc(50% - 40vh - 5vh);
+}
+
+div#human6 {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 35vh);
+    left: calc(50% + 40vh - 5vh);
+}
+
+div#human7 {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 27vh);
+    left: calc(50% - 52vh - 5vh);
+}
+
+div#human8 {
+    position: absolute;
+    z-index: 1;
+    top: calc(100% - 27vh);
+    left: calc(50% + 52vh - 5vh);
+}
+
+div#desk {
+    position: absolute;
+    z-index: 2;
+    top: calc(100% - 20vh);
+    left: calc(50% - 55vh);
+}
+
+img.humanPicture {
+    height: auto;
+    width: 9vh;
+}
+
+img.deskPicture {
+    height: 20vh;
+    width: 110vh;
+}
+
+img.fukidashiPictureC {
+    height: auto;
+    width: 60vh;
 }

@@ -264,20 +264,36 @@ span.answers {
     font-size: 50px;
     margin: auto;
 }
+
 div#wordfield{
-    position: relative;
+    position: absolute;
     background-color: rgba(0,0,0,0.8);
     width: 80vw;
     height: 80vh;
     top: calc(50% - 40vh);
     left: calc(50% - 40vw);
     text-align: center;
+    z-index: 1;
 }
+
 span#wordnow{
+    position: absolute;
     font-size: 200px;
+    width: 80vw;
+    height: auto;
+    left: calc(50% - 40vw);
+    top: calc(50% - 20vh);
     color: white;
+    z-index: 2;
 }
+
 span#wordpre{
+    position: absolute;
     font-size: 100px;
+    width: 60vw;
+    height: auto;
+    left: calc(50% - 30vw);
+    top: calc(50% + 20vh);
     color: rgba(255,255,255,0.8);
+    z-index: 2;
 }

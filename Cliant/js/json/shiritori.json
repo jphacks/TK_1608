@@ -1,0 +1,28 @@
+{
+    "message":[
+        {
+            "id" : 1,
+            "nowmessage" : "りんご",
+            "premessage" : "none",
+            "answer" : 1
+        },
+        {
+            "id" : 2,
+            "nowmessage" : "ごりら",
+            "premessage" : "りんご",
+            "answer" : 1
+        },
+        {
+            "id" : 3,
+            "nowmessage" : "ラッパ",
+            "premessage" : "ごりら",
+            "answer" : 1
+        },
+        {
+            "id" : 4,
+            "nowmessage" : "パン",
+            "premessage" : "ラッパ",
+            "answer" : 0   
+         }
+    ]
+}

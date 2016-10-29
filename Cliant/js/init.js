@@ -18,19 +18,19 @@ function update_view() {
     // console.log("mode: " + m_data.mode);
     switch (m_data.mode) {
         case "chat":
-        $.fn.fullpage.moveTo(0, 1);
-        get_Json("chat");
-        break;
+            $.fn.fullpage.moveTo(0, 1);
+            get_Json("chat");
+            break;
         case "shiritori":
-        $.fn.fullpage.moveTo(0, 0);
-        get_Json("shiritori");
-        break;
+            $.fn.fullpage.moveTo(0, 0);
+            get_Json("shiritori");
+            break;
         case "fiveBomber":
-        $.fn.fullpage.moveTo(0, 2);
-        fiveBomber(get_Json("fiveBomber"));
-        break;
+            $.fn.fullpage.moveTo(0, 2);
+            fiveBomber(get_Json("fiveBomber"));
+            break;
         default:
-        break;
+            break;
     }
 }
 
@@ -52,21 +52,21 @@ $(document).ready(function () {
 });
 
 function get_Json(str) {
-    $.getJSON(("js/json/" + str + ".json"), function(data_) {
+    $.getJSON(("js/json/" + str + ".json"), function (data_) {
         switch (str) {
             case "mode":
-            m_data = data_; update_view();
-            break;
+                m_data = data_; update_view();
+                break;
             case "chat":
-            c_data = data_; chat();
-            break;
+                c_data = data_; chat();
+                break;
             case "shiritori":
-            s_data = data_; shiritori();
-            break;
+                s_data = data_; shiritori();
+                break;
             case "fiveBomber":
-            f_data = data_; break;
+                f_data = data_; break;
             default:
-            break;
+                break;
         }
     });
 }
@@ -85,20 +85,29 @@ function chat() {
 
 function pop(idNum) {
     $("#fukidashi" + idNum + "," + "#answer" + idNum).animate({ opacity: 1 }, 500, 'swing',
-    function () {
-        $(this).animate({ opacity: 1 }, 500, 'swing',
         function () {
-            $(this).animate({ opacity: 0 }, 500, 'swing');
+            $(this).animate({ opacity: 1 }, 500, 'swing',
+                function () {
+                    $(this).animate({ opacity: 0 }, 500, 'swing');
+                });
         });
-    });
 }
-
+/*しりとり変化用変数*/
+var pre="left";
+var pre="right";
 function shiritori() {
     console.log("s_data: " + s_data);
+    if(s_data.update==1){
     if (s_data != null) {
+        $("#answerleft,#answerright,#wordfieldleft,#wordfieldright").fadeOut(500);
         var dataArray = s_data;
-        document.getElementById("wordnow").textContent = dataArray.nowmessage;
-        document.getElementById("wordpre").textContent = dataArray.premessage;
+        document.getElementById("wordleft").textContent = dataArray.nowmessage;
+        document.getElementById("wordright").textContent = dataArray.premessage;
+        var $answerpre = document.getElementById("answerleftimg");
+        var $answernow = document.getElementById("answerrightimg");
+        $answerpre.src = ("img/human/0" + dataArray.preanswer + "-2.png");
+        $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
+        $("#answerleft,#answerright,#wordfieldleft,#wordfieldright").fadeIn(500);
         if (dataArray.correct == 1) {
             console.log("正解!");
         } else {
@@ -106,5 +115,31 @@ function shiritori() {
         }
     } else {
         console.log("data null");
+    }
+    }
+}
+
+function shiritorisecond() {
+    if (s_data != null) {
+        $("#answerpre,#answernow").fadeOut(500);
+        var dataArray = s_data;
+        document.getElementById("wordfieldpre").textContent = dataArray.nowmessage;
+        document.getElementById("wordfieldnow").textContent = dataArray.premessage;
+        var $answerpre = document.getElementById("answerpreimg");
+        var $answernow = document.getElementById("answernowimg");
+        $answerpre.src = ("img/human/0" + dataArray.preanswer + "-2.png");
+        $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
+        $("#answerpre,#answernow").fadeIn(500);
+        if (dataArray.correct == 1) {
+            console.log("正解!");
+        } else {
+            console.log("不正解...");
+        }
+    } else {
+        console.log("data null");
+    }
+    s_flag = false;
+    if (s_flag != true) {
+        console.log("afadsfaff");
     }
 }

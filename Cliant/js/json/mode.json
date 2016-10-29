@@ -1,4 +1,4 @@
 {
-    "mode" : "chat",
+    "mode" : "shiritori",
     "exist" : [ 0, 0, 0, 1, 1, 1, 1, 1 ]
 }

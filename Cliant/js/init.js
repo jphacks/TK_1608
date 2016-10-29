@@ -113,42 +113,24 @@ function pop(idNum) {
 
 /*しりとり変化用変数*/
 var pre = "left";
-    var pre = "right";
-    function shiritori() {
-        console.log("s_data: " + s_data);
-        if (s_data.update == 1) {
-            if (s_data != null) {
-                $("#answerleft,#answerright,#wordfieldleft,#wordfieldright").fadeOut(500);
-                var dataArray = s_data;
-                document.getElementById("wordleft").textContent = dataArray.nowmessage;
-                document.getElementById("wordright").textContent = dataArray.premessage;
-                var $answerpre = document.getElementById("answerleftimg");
-                var $answernow = document.getElementById("answerrightimg");
-                $answerpre.src = ("img/human/0" + dataArray.preanswer + "-2.png");
-                $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
-                $("#answerleft,#answerright,#wordfieldleft,#wordfieldright").fadeIn(500);
-                if (dataArray.correct == 1) {
-                    console.log("正解!");
-                } else {
-                    console.log("不正解...");
-                }
-            } else {
-                console.log("data null");
-            }
-        }
+var now = "right";
+var s_flag = false;
+function shiritori() {
+    console.log("s_data: " + s_data);
+    if (s_data.update == 1) {
+        s_flag = true
     }
-
-    function shiritorisecond() {
+    if (s_flag == true) {
         if (s_data != null) {
-            $("#answerpre,#answernow").fadeOut(500);
+            $("#answerleft,#answerright,#wordfieldleft,#wordfieldright").fadeOut(300);
             var dataArray = s_data;
-            document.getElementById("wordfieldpre").textContent = dataArray.nowmessage;
-            document.getElementById("wordfieldnow").textContent = dataArray.premessage;
-            var $answerpre = document.getElementById("answerpreimg");
-            var $answernow = document.getElementById("answernowimg");
+            document.getElementById("wordleft").textContent = dataArray.premessage;
+            document.getElementById("wordright").textContent = dataArray.nowmessage;
+            var $answerpre = document.getElementById("answerleftimg");
+            var $answernow = document.getElementById("answerrightimg");
             $answerpre.src = ("img/human/0" + dataArray.preanswer + "-2.png");
             $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
-            $("#answerpre,#answernow").fadeIn(500);
+            $("#answerleft,#answerright,#wordfieldleft,#wordfieldright").fadeIn(300,shiritoricorrect());
             if (dataArray.correct == 1) {
                 console.log("正解!");
             } else {
@@ -158,7 +140,46 @@ var pre = "left";
             console.log("data null");
         }
         s_flag = false;
-        if (s_flag != true) {
-            console.log("afadsfaff");
-        }
     }
+
+}
+/*function shiritorisecond() {
+    if (s_data != null) {
+        $("#answerpre,#answernow").fadeOut(500);
+        var dataArray = s_data;
+        document.getElementById("wordfieldpre").textContent = dataArray.nowmessage;
+        document.getElementById("wordfieldnow").textContent = dataArray.premessage;
+        var $answerpre = document.getElementById("answerpreimg");
+        var $answernow = document.getElementById("answernowimg");
+        $answerpre.src = ("img/human/0" + dataArray.preanswer + "-2.png");
+        $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
+        $("#answerpre,#answernow").fadeIn(500);
+        shiritoricorrect();
+        if (dataArray.correct == 1) {
+            console.log("正解!");
+        } else {
+            console.log("不正解...");
+        }
+    } else {
+        console.log("data null");
+    }
+    s_flag = false;
+    if (s_flag != true) {
+        console.log("afadsfaff");
+    }
+}
+*/
+function shiritoricorrect(){
+    console.log("corect img display");
+    var $correct = document.getElementById("correctimg");
+    if(s_data.correct==1){
+        $correct.src = ("img/correct.png");
+    }else{
+        $correct.src = ("img/incorrect.png");
+    }
+    $("#correctdisplay").fadeOut(200);
+    $("#correctdisplay").fadeIn(200);
+    $("#correctdisplay").fadeOut(200);
+    $("#correctdisplay").fadeIn(200);
+    $("#correctdisplay").fadeOut(200);
+}

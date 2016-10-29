@@ -35,6 +35,11 @@ div#odai {
     left: calc(50% - 25vw);
 }
 
+#odai img {
+    width: 50vw;
+    height: 45vh;
+}
+
 div#timer {
     position: absolute;
     right: 5vh;

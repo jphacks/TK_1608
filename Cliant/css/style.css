@@ -35,6 +35,11 @@ div#odai {
     left: calc(50% - 25vw);
 }
 
+#odai img {
+    width: 50vw;
+    height: 45vh;
+}
+
 div#timer {
     position: absolute;
     right: 5vh;
@@ -259,6 +264,7 @@ span.answers {
     font-size: 50px;
     margin: auto;
 }
+
 div#wordfield{
     position: absolute;
     background-color: rgba(0,0,0,0.8);
@@ -269,6 +275,7 @@ div#wordfield{
     text-align: center;
     z-index: 1;
 }
+
 span#wordnow{
     position: absolute;
     font-size: 200px;
@@ -279,6 +286,7 @@ span#wordnow{
     color: white;
     z-index: 2;
 }
+
 span#wordpre{
     position: absolute;
     font-size: 100px;

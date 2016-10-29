@@ -74,12 +74,12 @@ function get_Json(str) {
 
 function pop(fukidashi, answer) {
     $(fukidashi + "," + answer).animate({ opacity: 1 }, 500, 'swing',
+    function () {
+        $(this).animate({ opacity: 1 }, 500, 'swing',
         function () {
-            $(this).animate({ opacity: 1 }, 500, 'swing',
-                function () {
-                    $(this).animate({ opacity: 0 }, 500, 'swing');
-                });
+            $(this).animate({ opacity: 0 }, 500, 'swing');
         });
+    });
 }
 
 function shiritori() {

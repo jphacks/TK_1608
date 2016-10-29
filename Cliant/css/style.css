@@ -21,7 +21,7 @@ div#fiveBomber {
     background-color: #FF9800;
 }
 
-div#parts {
+div.parts {
     position: relative;
     width: 100vw;
     height: 100vh;

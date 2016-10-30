@@ -1,7 +1,7 @@
 {   "update" : 1,
-    "preanswer" : 7,
-    "premessage" : "リンゴ",
-    "nowanswer" : 8,
+    "preanswer" : 0,
+    "premessage" : "",
+    "nowanswer" : 0,
     "nowmessage" : "ゴリラ",
     "correct": 0
 }

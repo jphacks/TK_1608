@@ -10,7 +10,7 @@ var num_s = 0;
 
 function loadFirst() {
     $.fn.fullpage.silentMoveTo(0, 1);
-    MasterTimer = setInterval("timer()", 8000);
+    MasterTimer = setInterval("timer()", 4000);
 }
 
 function timer() {
@@ -117,46 +117,65 @@ var now = "right";
 var s_flag = false;
 function shiritori() {
     console.log("s_data: " + s_data);
+    var dataArray = s_data;
     if (s_data.update == 1) {
         s_flag = true
     }
     if (s_flag == true) {
         if (s_data != null) {
-            $("#answerleft,#answerright,#wordfieldleft,#wordfieldright").fadeOut(500, function () {
-                var dataArray = s_data;
-                document.getElementById("wordleft").textContent = dataArray.premessage;
-                document.getElementById("wordright").textContent = dataArray.nowmessage;
+            $("#answerleft,#answerright,#wordfieldleft,#wordfieldright,#namebox_L,#namebox_R").fadeOut(500, function () {
+                if (dataArray.premessage != "") {
+                    document.getElementById("wordleft").textContent = dataArray.premessage;
+                } else {
+                    document.getElementById("wordleft").textContent = "none";
+                }
+                if (dataArray.nowmessage != "") {
+                    document.getElementById("wordright").textContent = dataArray.nowmessage;
+                } else {
+                    document.getElementById("wordright").textContent = "none";
+                }
                 var $answerpre = document.getElementById("answerleftimg");
                 var $answernow = document.getElementById("answerrightimg");
-                $answerpre.src = ("img/human/0" + dataArray.preanswer + "-2.png");
-                $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
-                $("#answerleft,#answerright,#wordfieldleft,#wordfieldright").fadeIn(700, function () {
+                if (dataArray.preanswer > 0) {
+                    $answerpre.src = ("img/human/0" + dataArray.preanswer + "-2.png");
+                    document.getElementById("answerleft_name").textContent = "前: "+ dataArray.preanswer + "番の方";
+                }else{
+                    document.getElementById("answerleft_name").textContent = "前: none";
+                    $answerpre.src = "";
+                }
+                if (dataArray.nowanswer > 0) {
+                    $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
+                    document.getElementById("answerright_name").textContent = "今: "+ dataArray.nowanswer + "番の方";
+                }else{
+                    document.getElementById("answerright_name").textContent = "今: none";
+                    $answernow.src = "";
+                }
+                $("#answerleft,#answerright,#wordfieldleft,#wordfieldright,#namebox_L,#namebox_R").fadeIn(700, function () {
                     shiritoricorrect();
-                    console.log("fade_end");
                 });
-
             });
             if (dataArray.correct == 1) {
                 console.log("正解!");
             } else {
                 console.log("不正解...");
+                console.log("chatモードに戻ります");
             }
         } else {
             console.log("data null");
         }
         s_flag = false;
-        console("finish_s_flag: " + s_flag);
+        console.log("finish_s_flag: " + s_flag);
+        //change_mode_order();
     }
 
 }
 function shiritoricorrect() {
-    console.log("corect img display");
+    //console.log("corect img display");
     var $correct = document.getElementById("correctimg");
     if (s_data.correct == 1) {
         $correct.src = ("img/correct.png");
     } else {
         $correct.src = ("img/incorrect.png");
-        change_mode_order("mode");
     }
     $("#correctdisplay").fadeOut(200, function () {
         $("#correctdisplay").fadeIn(200, function () {
@@ -171,14 +190,19 @@ function shiritoricorrect() {
     });
 }
 
-/*strをサーバーにgetする関数*/ 
-function change_mode_order(str){
+/*strをサーバーにgetする関数*/
+function change_mode_order(str) {
     console.log("start_ajax");
-    $.ajax({
+    $.getJSON(("https://fast-chamber-16922.herokuapp.com/api/mode/change/chat"), function (data_) {
+        console.log("getdata: " + data_);
+    });
+    /*$.ajax({
         type : "get",
-        url : "https://fast-chamber-16922.herokuapp.com/api/mode/change/"+str,
+        url : "https://fast-chamber-16922.herokuapp.com/api/line/push/U70d97f0adb6aeed231ab6cf0e3a4b5e9/hello",
+        dataType : 'JSON',
         sccess : function(data){
             console.log("success!!!!!");
+
         }
-});
+});*/
 }

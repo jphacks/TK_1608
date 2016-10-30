@@ -331,11 +331,44 @@ div#answerleft{
 div#answerright{
     position: absolute;
     top: 40vh;
-    right:25vw;
+    right:5vw;
     z-index: 3
 }
 
+div#namebox_L{
+    position: absolute;
+    width: 80vw;
+    top: 42vh;
+    left: 5vw;
+    z-index: 5;
+}
+
+div#namebox_R{
+    position: absolute;
+    width: 80vw;
+    top: 42vh;
+    right: 5vw;
+    z-index: 5;
+}
+
+span#answerleft_name{
+    position: absolute;
+    height:50vh;
+    left: 10vw;
+    color: white;
+    font-size: 30px;
+}
+
+span#answerright_name{
+    position: absolute;
+    height:50vh;
+    right: 10vw;
+    color: white;
+    font-size: 30px;
+}
+
 img#answerleftimg{
+    position: absolute;
     height:65vh;
     width: auto;
 }
@@ -344,6 +377,7 @@ img#answerrightimg{
     position: absolute;
     height:65vh;
     width: auto;
+    right: 5vw;
 }
 
 img#lefthukidashi{

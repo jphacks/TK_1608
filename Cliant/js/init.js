@@ -24,7 +24,8 @@ $(document).ready(function () {
 });
 
 function setHumans() {
-    $("#timer").children("#remainTime").text("∞").css("font-size", "15vh");
+    $("#timer").css({"top" : "0.3vh"});
+    $("#timer").children("#remainTime").text("∞").css({"font-size" : "15vh"});
 
     for (var i = 0; i < 9; i++) {
         $(('#human' + i)).css({ opacity: 0, top: 0 });
@@ -47,7 +48,7 @@ function main() {
         $.fn.fullpage.moveTo(0, 1);
         setHumans();
         countStart = false;
-        countDown = 30;
+        countDown = 31;
         chatTimer = setInterval("chat()", 1000);
         break;
         case "shiritori":
@@ -66,26 +67,25 @@ function main() {
 function chat() {
     chat_order();
 
-    if (c_data.member.update == 1) {
-        $("#humanNum").children("#nowHumanNum").text(c_data.member.numOfHuman);
-        for (var i = 0; i < 8; i++) {
-            if (i < c_data.member.numOfHuman){
-                $(("#human" + (i + 1))).animate({ opacity: 1, top: h[i] }, 1000, 'swing');
-            } else {
-                $(("#human" + (i + 1))).animate({ opacity: 0, top: 0 }, 1000, 'swing');
-            }
-        }
-        if (c_data.member.numOfHuman >= 2) {
-            countStart = true;
+    $("#humanNum").children("#nowHumanNum").text(c_data.numOfMember);
+    for (var i = 0; i < 8; i++) {
+        if (i < c_data.numOfMember){
+            $(("#human" + (i + 1))).animate({ opacity: 1, top: h[i] }, 1000, 'swing');
+        } else {
+            $(("#human" + (i + 1))).animate({ opacity: 0, top: 0 }, 1000, 'swing');
         }
     }
+    if (c_data.numOfMember >= 2) {
+        countStart = true;
+    }
     if (countStart) {
-        if (c_data.member.numOfHuman >= 2) {
+        if (c_data.numOfMember >= 2) {
             nextMode = "shiritori";
             countDown -= 1;
-            $("#timer").children("#remainTime").text(countDown).css("font-size", "11vh");;
+            $("#timer").css({"top" : "4vh"});
+            $("#timer").children("#remainTime").text(countDown).css({"font-size" : "11vh"});;
         }
-        if (c_data.member.numOfHuman == 5) {
+        if (c_data.numOfMember == 5) {
             nextMode = "fiveBomber";
         }
     }
@@ -189,8 +189,6 @@ function shiritoricorrect() {
                     $("#correctdisplay").fadeOut(200, function () {
                         if (s_data.correct == 0) {
                             Mode = "chat";
-                            countStart = false;
-                            countDown = 30;
                             clearInterval(shiritoriTimer);
                             main();
                         }

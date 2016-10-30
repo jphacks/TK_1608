@@ -345,18 +345,55 @@ div#answerleft{
 div#answerright{
     position: absolute;
     top: 40vh;
-    right:25vw;
+    right:5vw;
     z-index: 3
 }
-img#answerleftimg{
-    height:65vh;
-    width: auto;
+
+div#namebox_L{
+    position: absolute;
+    width: 80vw;
+    top: 42vh;
+    left: 5vw;
+    z-index: 5;
 }
-img#answerrightimg{
+
+div#namebox_R{
+    position: absolute;
+    width: 80vw;
+    top: 42vh;
+    right: 5vw;
+    z-index: 5;
+}
+
+span#answerleft_name{
+    position: absolute;
+    height:50vh;
+    left: 10vw;
+    color: white;
+    font-size: 30px;
+}
+
+span#answerright_name{
+    position: absolute;
+    height:50vh;
+    right: 10vw;
+    color: white;
+    font-size: 30px;
+}
+
+img#answerleftimg{
     position: absolute;
     height:65vh;
     width: auto;
 }
+
+img#answerrightimg{
+    position: absolute;
+    height:65vh;
+    width: auto;
+    right: 5vw;
+}
+
 img#lefthukidashi{
     position: absolute;
     height: 100vh;
@@ -366,6 +403,7 @@ img#lefthukidashi{
     left: calc(30% - 18vw);
 
 }
+
 img#righthukidashi{
     position: absolute;
     height: 100vh;
@@ -373,4 +411,19 @@ img#righthukidashi{
     z-index:5;
     top: calc(40% - 30vh);
     right: calc(30% - 18vw);
+}
+
+div#correctdisplay{
+    position: absolute;
+    height: 50vh;
+    width: auto;
+    z-index:20;
+    top: calc(50% - 45vh);
+    left: calc(50% - 30vw);
+}
+
+img#correctimg{
+    position: absolute;
+    height: 90vh;
+    width: auto;
 }

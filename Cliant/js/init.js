@@ -1,18 +1,16 @@
-var MasterTimer;
+var Mode, nextMode;
+var chatTimer;
+var shiritoriTimer;
+var fiveBomberTimer;
 var m_data, c_data, s_data, f_data;
 var h = ["50%", "50%", "50%", "50%", "55%", "55%", "65%", "65%"];
-var existed = [0, 0, 0, 0, 0, 0, 0, 0];
-var chatLog = [0, ""];
-
-/*後で消す*/
-var num_c = 0;
-var num_s = 0;
+var countDown = 0;
+var countStart = false;
 
 $(document).ready(function () {
     $('#fullpage').fullpage({
         controlArrows: false,
         verticalCentered: false
-        // anchors: ['fiveBomber', 'chat', 'shiritori']
     });
 
     for (var i = 1; i < 9; i++){
@@ -23,89 +21,85 @@ $(document).ready(function () {
         $("#chat").children(".parts")
         .append("<div id='answer"+i+"'><span class='answers'></span></div>");
     }
+});
+
+function setHumans() {
+    $("#timer").children("#remainTime").text("∞").css("font-size", "15vh");
 
     for (var i = 0; i < 9; i++) {
         $(('#human' + i)).css({ opacity: 0, top: 0 });
         $(('#fukidashi' + i)).css({ opacity: 0 });
         $(('#answer' + i)).css({ opacity: 0 });
     }
-});
+}
 
 
 function loadFirst() {
     $.fn.fullpage.silentMoveTo(0, 1);
-    MasterTimer = setInterval("timer()", 4000);
+    change_mode_order("chat");
+    Mode = "chat";
+    main();
 }
 
-function timer() {
-    get_Json("mode");
-}
-
-function update_view() {
-
-    switch (m_data.mode) {
+function main() {
+    switch (Mode) {
         case "chat":
         $.fn.fullpage.moveTo(0, 1);
-        get_Json("chat");
+        setHumans();
+        countStart = false;
+        countDown = 30;
+        chatTimer = setInterval("chat()", 1000);
         break;
         case "shiritori":
         $.fn.fullpage.moveTo(0, 0);
-        get_Json("shiritori");
+        shiritoriTimer = setInterval("shiritori()", 4000);
         break;
         case "fiveBomber":
         $.fn.fullpage.moveTo(0, 2);
-        fiveBomber(get_Json("fiveBomber"));
+        fiveBomberTimer = setInterval("fiveBomber()", 1000);
         break;
         default:
         break;
     }
 }
 
-function get_Json(str) {
-    $.getJSON(("js/json/" + str + ".json"), function (data_) {
-        switch (str) {
-            case "mode":
-            m_data = data_; update_view();
-            break;
-            case "chat":
-            c_data = data_; chat();
-            break;
-            case "shiritori":
-            s_data = data_; shiritori();
-            break;
-            case "fiveBomber":
-            f_data = data_; break;
-            default:
-            break;
-        }
-    });
-}
-
 function chat() {
-    if (m_data != null) {
-        var exist = m_data.exist;
-        for (var i = 0; i < exist.length; i++) {
-            if (exist[i] == 1 && existed[i] == 0) {
-                existed[i] = 1;
+    chat_order();
+
+    if (c_data.member.update == 1) {
+        $("#humanNum").children("#nowHumanNum").text(c_data.member.numOfHuman);
+        for (var i = 0; i < 8; i++) {
+            if (i < c_data.member.numOfHuman){
                 $(("#human" + (i + 1))).animate({ opacity: 1, top: h[i] }, 1000, 'swing');
-            } else if (exist[i] == 0 && existed[i] == 1) {
-                existed[i] = 0;
+            } else {
                 $(("#human" + (i + 1))).animate({ opacity: 0, top: 0 }, 1000, 'swing');
             }
         }
+        if (c_data.member.numOfHuman >= 2) {
+            countStart = true;
+        }
     }
-    if (c_data != null) {
-        var dataArray = c_data.message;
-        if (dataArray.ID > 0 && dataArray.ID < 9) {
-            if ((dataArray.ID != chatLog[0] || dataArray.answer != chatLog[1]) && dataArray.answer != "") {
-                chatLog[0] = dataArray.ID;
-                chatLog[1] = dataArray.answer;
-                $(("#answer" + dataArray.ID)).children("span").text(dataArray.answer);
-                pop(dataArray.ID);
-            }
+    if (countStart) {
+        if (c_data.member.numOfHuman >= 2) {
+            nextMode = "shiritori";
+            countDown -= 1;
+            $("#timer").children("#remainTime").text(countDown).css("font-size", "11vh");;
+        }
+        if (c_data.member.numOfHuman == 5) {
+            nextMode = "fiveBomber";
+        }
+    }
+
+    if (countDown > 0) {
+        if (c_data.message.update == 1) {
+            $(("#answer" + c_data.message.ID)).children("span").text(c_data.message.answer);
+            pop(c_data.message.ID);
         }
     } else {
-        console.log("data null");
+        change_mode_order(nextMode);
+        Mode = nextMode;
+        clearInterval(chatTimer);
+        main();
     }
 }
 
@@ -126,7 +120,8 @@ var pre = "left";
 var now = "right";
 var s_flag = false;
 function shiritori() {
-    console.log("s_data: " + s_data);
+    shiritori_order();
+
     var dataArray = s_data;
     if (s_data.update == 1) {
         s_flag = true
@@ -180,7 +175,7 @@ function shiritori() {
 }
 
 function shiritoricorrect() {
-    //console.log("corect img display");
+
     var $correct = document.getElementById("correctimg");
     if (s_data.correct == 1) {
         $correct.src = ("img/correct.png");
@@ -192,7 +187,13 @@ function shiritoricorrect() {
             $("#correctdisplay").fadeOut(200, function () {
                 $("#correctdisplay").fadeIn(200, function () {
                     $("#correctdisplay").fadeOut(200, function () {
-
+                        if (s_data.correct == 0) {
+                            Mode = "chat";
+                            countStart = false;
+                            countDown = 30;
+                            clearInterval(shiritoriTimer);
+                            main();
+                        }
                     });
                 });
             });
@@ -202,8 +203,34 @@ function shiritoricorrect() {
 
 /*strをサーバーにgetする関数*/
 function change_mode_order(str) {
-    console.log("start_ajax");
-    $.getJSON(("https://fast-chamber-16922.herokuapp.com/api/mode/change/chat"), function (data_) {
+    var key = "https://fast-chamber-16922.herokuapp.com/api/mode/change/"+str;
+    var keyDemo = "js/json/mode.json";
+    console.log("start_ajax_mode");
+    $.getJSON(keyDemo, function (data_) {
         console.log("getdata: " + data_);
+        m_data = data_;
+        console.log(m_data.mode + str);
+        if (m_data.mode == str) {
+        }
+    });
+}
+
+function chat_order() {
+    var key = "https://fast-chamber-16922.herokuapp.com/api/chat/newmessage";
+    var keyDemo = "js/json/chat.json";
+    console.log("start_ajax_chat");
+    $.getJSON(keyDemo, function (data_) {
+        console.log("getdata: " + data_);
+        c_data = data_;
+    });
+}
+
+function shiritori_order() {
+    var key = "https://fast-chamber-16922.herokuapp.com/api/shiritori/newmessage";
+    var keyDemo = "js/json/shiritori.json";
+    console.log("start_ajax_shiritori");
+    $.getJSON(keyDemo, function (data_) {
+        console.log("getdata: " + data_);
+        s_data = data_;
     });
 }

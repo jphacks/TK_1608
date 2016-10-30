@@ -70,11 +70,14 @@ img.odaiPicture {
 
 div#timer {
     position: absolute;
+    width: 15vh;
+    height: 12vh;
     top: 4vh;
-    left: calc(50% + 61vh);
+    left: calc(50vw + 61vh);
 }
 
 span#remainTime {
+    margin: auto;
     font-size: 11vh;
     color: #000000;
     /*text-align: right;*/

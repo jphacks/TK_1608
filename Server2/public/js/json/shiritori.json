@@ -1,0 +1,8 @@
+{
+    "update" : 1,
+    "preanswer" : 3,
+    "premessage" : "ラッパ",
+    "nowanswer" : 4,
+    "nowmessage" : "パン",
+    "correct": 0
+}

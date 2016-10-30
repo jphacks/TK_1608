@@ -49,6 +49,7 @@ function main() {
         setHumans();
         countStart = false;
         countDown = 31;
+        chat_order();
         chatTimer = setInterval("chat()", 1000);
         break;
         case "shiritori":
@@ -172,6 +173,8 @@ function shiritori() {
         console.log("finish_s_flag: " + s_flag);
         //change_mode_order();
     }
+
+
 }
 
 function shiritoricorrect() {

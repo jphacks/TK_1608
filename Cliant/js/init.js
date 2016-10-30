@@ -8,6 +8,30 @@ var chatLog = [0, ""];
 var num_c = 0;
 var num_s = 0;
 
+$(document).ready(function () {
+    $('#fullpage').fullpage({
+        controlArrows: false,
+        verticalCentered: false
+        // anchors: ['fiveBomber', 'chat', 'shiritori']
+    });
+
+    for (var i = 1; i < 9; i++){
+        $("#chat").children(".parts")
+        .append("<div id='human"+i+"'><img src='img/human/0"+i+"-1.png' class='humanPicture'></div>");
+        $("#chat").children(".parts")
+        .append("<div id='fukidashi"+i+"'><img src='img/chat_fukidashi/"+i+".png' class='fukidashiPicture'></div>");
+        $("#chat").children(".parts")
+        .append("<div id='answer"+i+"'><span class='answers'></span></div>");
+    }
+
+    for (var i = 0; i < 9; i++) {
+        $(('#human' + i)).css({ opacity: 0, top: 0 });
+        $(('#fukidashi' + i)).css({ opacity: 0 });
+        $(('#answer' + i)).css({ opacity: 0 });
+    }
+});
+
+
 function loadFirst() {
     $.fn.fullpage.silentMoveTo(0, 1);
     MasterTimer = setInterval("timer()", 2000);
@@ -36,20 +60,6 @@ function update_view() {
             break;
     }
 }
-
-$(document).ready(function () {
-    $('#fullpage').fullpage({
-        controlArrows: false,
-        verticalCentered: false
-        // anchors: ['fiveBomber', 'chat', 'shiritori']
-    });
-
-    for (var i = 0; i < 9; i++) {
-        $(('#human' + i)).css({ opacity: 0, top: 0 });
-        $(('#fukidashi' + i)).css({ opacity: 0 });
-        $(('#answer' + i)).css({ opacity: 0 });
-    }
-});
 
 function get_Json(str) {
     $.getJSON(("js/json/" + str + ".json"), function (data_) {

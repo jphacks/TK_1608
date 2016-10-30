@@ -1,5 +1,10 @@
 {
-    "message": {
+    "member" : {
+        "update" : 0,
+        "numOfHuman" : 0
+    },
+    "message" : {
+        "update" : 0,
         "ID" : 5,
         "answer" : "ふぁふぁふぁ?"
     }

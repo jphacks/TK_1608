@@ -28,40 +28,66 @@ div.parts {
 
 div#chat_back {
     position: absolute;
-    width: 100vw;
+    width: 170vh;
     height: 100vh;
     top: calc(50% - 50vh);
-    left: calc(50% - 50vw);
+    left: calc(50% - 85vh);
     z-index: 0;
 }
 
-#chat_back img {
-    width: 100vw;
+img.backPicture {
+    width: 170vh;
+    height: 100vh;
+}
+
+div#desk {
+    position: absolute;
+    width: 170vh;
+    height: 100vh;
+    top: calc(50% - 50vh);
+    left: calc(50% - 85vh);
+    z-index: 2;
+}
+
+img.deskPicture {
+    width: 170vh;
     height: 100vh;
 }
 
 div#odai {
     position: absolute;
     background-color: #FFFFFF;
-    width: 45vw;
+    width: 70vh;
     height: 40vh;
     top: calc(50% - 42vh);
-    left: calc(50% - 22.5vw);
+    left: calc(50% - 35vh);
 }
 
-#odai img {
-    width: 45vw;
+img.odaiPicture {
+    width: 70vh;
     height: 40vh;
 }
 
 div#timer {
     position: absolute;
     top: 4vh;
-    right: 4vw;
+    left: calc(50% + 61vh);
 }
 
 span#remainTime {
-    font-size: 80px;
+    font-size: 11vh;
+    color: #000000;
+    /*text-align: right;*/
+}
+
+div#humanNum {
+    position: absolute;
+    top: 40vh;
+    left: calc(50% + 66.5vh);
+}
+
+span#nowHumanNum {
+    font-size: 6vh;
     color: #000000;
     /*text-align: right;*/
 }
@@ -70,81 +96,69 @@ div#human1 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 55vh);
-    left: calc(50% - 8vh - 12vh);
+    left: calc(50% - 10vh - 17vh);
 }
 
 div#human2 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 55vh);
-    left: calc(50% + 8vh - 12vh);
+    left: calc(50% + 10vh - 17vh);
 }
 
 div#human3 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 55vh);
-    left: calc(50% - 24vh - 12vh);
+    left: calc(50% - 30vh - 17vh);
 }
 
 div#human4 {
     position: absolute;
     z-index: 1;
     top: calc(100% - 55vh);
-    left: calc(50% + 24vh - 12vh);
+    left: calc(50% + 30vh - 17vh);
 }
 
 div#human5 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 50vh);
-    left: calc(50% - 40vh - 12vh);
+    top: calc(100% - 45vh);
+    left: calc(50% - 50vh - 17vh);
 }
 
 div#human6 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 50vh);
-    left: calc(50% + 40vh - 12vh);
+    top: calc(100% - 45vh);
+    left: calc(50% + 50vh - 17vh);
 }
 
 div#human7 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 42vh);
-    left: calc(50% - 52vh - 12vh);
+    top: calc(100% - 30vh);
+    left: calc(50% - 65vh - 17vh);
 }
 
 div#human8 {
     position: absolute;
     z-index: 1;
-    top: calc(100% - 42vh);
-    left: calc(50% + 52vh - 12vh);
-}
-
-div#desk {
-    position: absolute;
-    z-index: 2;
-    top: calc(100% - 25vh);
-    left: calc(50% - 30vw);
-}
-
-img.deskPicture {
-    width: 60vw;
-    height: 25vh;
+    top: calc(100% - 30vh);
+    left: calc(50% + 65vh - 17vh);
 }
 
 div#fukidashi1 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 63vh);
-    left: calc(50% - 35vh);
+    top: calc(100% - 65vh);
+    left: calc(50% - 35vh - 5vh);
 }
 
 div#fukidashi2 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 63vh);
+    top: calc(100% - 65vh);
     left: calc(50% - 35vh);
 }
 
@@ -152,49 +166,49 @@ div#fukidashi3 {
     position: absolute;
     z-index: 3;
     top: calc(100% - 63vh);
-    left: calc(50% - 35vh - 2vh);
+    left: calc(50% - 35vh - 10vh);
 }
 
 div#fukidashi4 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 63vh);
-    left: calc(50% - 35vh + 2vh);
+    top: calc(100% - 66vh);
+    left: calc(50% - 35vh + 10vh);
 }
 
 div#fukidashi5 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 62vh);
-    left: calc(50% - 35vh - 12vh);
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh - 25vh);
 }
 
 div#fukidashi6 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 62vh);
-    left: calc(50% - 35vh + 12vh);
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh + 25vh);
 }
 
 div#fukidashi7 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 61vh);
-    left: calc(50% - 35vh - 22vh);
+    top: calc(100% - 54vh);
+    left: calc(50% - 35vh - 34vh);
 }
 
 div#fukidashi8 {
     position: absolute;
     z-index: 3;
-    top: calc(100% - 61vh);
-    left: calc(50% - 35vh + 22vh);
+    top: calc(100% - 54vh);
+    left: calc(50% - 35vh + 37vh);
 }
 
 div#answer1 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 63vh);
-    left: calc(50% - 35vh);
+    top: calc(100% - 65vh);
+    left: calc(50% - 35vh - 5vh);
     width: 70vh;
     padding-top: 1.5vh;
 }
@@ -202,7 +216,7 @@ div#answer1 {
 div#answer2 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 63vh);
+    top: calc(100% - 65vh);
     left: calc(50% - 35vh);
     width: 70vh;
     padding-top: 1.5vh;
@@ -212,7 +226,7 @@ div#answer3 {
     position: absolute;
     z-index: 4;
     top: calc(100% - 63vh);
-    left: calc(50% - 35vh - 2vh);
+    left: calc(50% - 35vh - 10vh);
     width: 70vh;
     padding-top: 1.5vh;
 }
@@ -220,8 +234,8 @@ div#answer3 {
 div#answer4 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 63vh);
-    left: calc(50% - 35vh + 2vh);
+    top: calc(100% - 66vh);
+    left: calc(50% - 35vh + 10vh);
     width: 70vh;
     padding-top: 1.5vh;
 }
@@ -229,8 +243,8 @@ div#answer4 {
 div#answer5 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 62vh);
-    left: calc(50% - 35vh - 12vh);
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh - 25vh);
     width: 70vh;
     padding-top: 1.5vh;
 }
@@ -238,8 +252,8 @@ div#answer5 {
 div#answer6 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 62vh);
-    left: calc(50% - 35vh + 12vh);
+    top: calc(100% - 60vh);
+    left: calc(50% - 35vh + 25vh);
     width: 70vh;
     padding-top: 1.5vh;
 }
@@ -247,8 +261,8 @@ div#answer6 {
 div#answer7 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 61vh);
-    left: calc(50% - 35vh - 22vh);
+    top: calc(100% - 54vh);
+    left: calc(50% - 35vh - 34vh);
     width: 70vh;
     padding-top: 1.5vh;
 }
@@ -256,14 +270,14 @@ div#answer7 {
 div#answer8 {
     position: absolute;
     z-index: 4;
-    top: calc(100% - 61vh);
-    left: calc(50% - 35vh + 22vh);
+    top: calc(100% - 54vh);
+    left: calc(50% - 35vh + 37vh);
     width: 70vh;
     padding-top: 1.5vh;
 }
 
 img.humanPicture {
-    width: 30vh;
+    width: 34vh;
     height: auto;
 }
 
@@ -274,7 +288,7 @@ img.fukidashiPicture {
 
 span.answers {
     text-align: center;
-    font-size: 50px;
+    font-size: 6vh;
     margin: auto;
 }
 

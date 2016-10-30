@@ -151,7 +151,7 @@ function shiritori() {
                     document.getElementById("answerleft_name").textContent = "前: "+ dataArray.preanswer + "番の方";
                 }else{
                     document.getElementById("answerleft_name").textContent = "前: none";
-                    $answerpre.src = "";
+                    $answerpre.src = null;
                 }
                 if (dataArray.nowanswer > 0) {
                     $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
@@ -182,7 +182,7 @@ function shiritori() {
 function shiritoricorrect() {
     //console.log("corect img display");
     var $correct = document.getElementById("correctimg");
-    if (s_data.correct == 1) {
+    if (s_data.correct == 1 ) {
         $correct.src = ("img/correct.png");
     } else {
         $correct.src = ("img/incorrect.png");

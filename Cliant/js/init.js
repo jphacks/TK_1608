@@ -48,7 +48,7 @@ function main() {
         $.fn.fullpage.moveTo(0, 1);
         setHumans();
         countStart = false;
-        countDown = 31;
+        countDown = 5;
         chatTimer = setInterval("chat()", 1000);
         break;
         case "shiritori":
@@ -99,6 +99,7 @@ function chat() {
         change_mode_order(nextMode);
         Mode = nextMode;
         clearInterval(chatTimer);
+        clearTimeout(shiritoriTimer);
         main();
     }
 }
@@ -119,6 +120,7 @@ function pop(idNum) {
 var pre = "left";
 var now = "right";
 var s_flag = false;
+var contetn_flag = true;
 function shiritori() {
     shiritori_order();
 
@@ -133,11 +135,13 @@ function shiritori() {
                     document.getElementById("wordleft").textContent = dataArray.premessage;
                 } else {
                     document.getElementById("wordleft").textContent = "none";
+                    contetn_flag = false;
                 }
                 if (dataArray.nowmessage != "") {
                     document.getElementById("wordright").textContent = dataArray.nowmessage;
                 } else {
                     document.getElementById("wordright").textContent = "none";
+                    contetn_flag = false;
                 }
                 var $answerpre = document.getElementById("answerleftimg");
                 var $answernow = document.getElementById("answerrightimg");
@@ -146,17 +150,21 @@ function shiritori() {
                     document.getElementById("answerleft_name").textContent = "前: "+ dataArray.preanswer + "番の方";
                 }else{
                     document.getElementById("answerleft_name").textContent = "前: none";
-                    $answerpre.src = null;
+                    contetn_flag = false;
+                    $answerpre.src = "img/human/clear.png";
                 }
                 if (dataArray.nowanswer > 0) {
                     $answernow.src = ("img/human/0" + dataArray.nowanswer + "-2.png");
                     document.getElementById("answerright_name").textContent = "今: "+ dataArray.nowanswer + "番の方";
                 }else{
                     document.getElementById("answerright_name").textContent = "今: none";
-                    $answernow.src = "";
+                    contetn_flag = false;
+                    $answernow.src = "img/human/clear.png";
                 }
                 $("#answerleft,#answerright,#wordfieldleft,#wordfieldright,#namebox_L,#namebox_R").fadeIn(700, function () {
+                    if(contetn_flag!=false){
                     shiritoricorrect();
+                    }
                 });
             });
             if (dataArray.correct == 1) {
@@ -169,6 +177,7 @@ function shiritori() {
             console.log("data null");
         }
         s_flag = false;
+        contetn_flag=true;
         console.log("finish_s_flag: " + s_flag);
         //change_mode_order();
     }
@@ -190,6 +199,7 @@ function shiritoricorrect() {
                         if (s_data.correct == 0) {
                             Mode = "chat";
                             clearInterval(shiritoriTimer);
+                            clearInterval(chatTimer);
                             main();
                         }
                     });

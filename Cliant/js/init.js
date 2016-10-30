@@ -48,7 +48,7 @@ function main() {
         $.fn.fullpage.moveTo(0, 1);
         setHumans();
         countStart = false;
-        countDown = 5;
+        countDown = 30;
         chatTimer = setInterval("chat()", 1000);
         break;
         case "shiritori":
